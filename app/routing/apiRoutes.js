@@ -7,10 +7,22 @@ module.exports = function(app) {
   });
 
   app.post("/api/friends", function(request, response) {
-      let newFriend = request.body;
-      newFriend.routeName = newFriend.name.replace(/\s+/g, "").toLowerCase();
-      friends.push(newFriend);
-      response.json(newFriend);
+      let maxDifference = 50;
+      let matchedCharacter;
+      let currentFriend = request.body;
+      console.log("Current friend: " + currentFriend);
+      friends.forEach(function (friend) {
+        let difference = 0;
+        for (i = 0; i < friend.scores.length; i++) {
+          difference += Math.abs(friend.scores[i] - currentFriend.scores[i]);
+        }
+        if (difference < maxDifference) {
+          maxDifference = difference;
+          matchedCharacter - friend;
+        };
+      });
+      response.json(matchedCharacter);
+      friends.push(request.body);
   });
 
 
