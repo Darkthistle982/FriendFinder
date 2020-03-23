@@ -10,7 +10,8 @@ module.exports = function(app) {
       let maxDifference = 50;
       let matchedCharacter;
       let currentFriend = request.body;
-      console.log("Current friend: " + currentFriend);
+
+      console.log("Current friend: " + currentFriend.name + "\n");
       friends.forEach(function (friend) {
         let difference = 0;
         for (i = 0; i < friend.scores.length; i++) {
@@ -18,7 +19,7 @@ module.exports = function(app) {
         }
         if (difference < maxDifference) {
           maxDifference = difference;
-          matchedCharacter - friend;
+          matchedCharacter = friend;
         };
       });
       response.json(matchedCharacter);
