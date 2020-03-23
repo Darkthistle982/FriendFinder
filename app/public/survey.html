@@ -224,9 +224,16 @@
                   $("#q9").val(),
                   $("#q10").val(),
                 ]
-              }
+              };
+              $.post("/api/friends", userData, function(data) {
+                $("#match-name").text(data.name);
+                $("#match-img").attr("src", data.photo);
+                $("#results-modal"),modal("toggle");
+              });
+            } else {
+              alert("Please fill out all fields before submitting!");
             }
-        })
+        });
         //jquery and javascript go here.
     </script>
   </body>
