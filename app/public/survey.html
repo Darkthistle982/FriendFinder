@@ -194,10 +194,38 @@
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
       crossorigin="anonymous"
     ></script>
+
     <script type="text/javascript">
         $("#submit").on("click", function() {
             event.preventDefault();
-            
+            function validateForms () {
+              let isValid = true;
+              $("form-control").each(function() {
+                if ($(this).val() === "") {
+                  isValid = false;
+                }
+              });
+              return isValid;
+            }
+            if (validateForms()) {
+              let userData = {
+                name: $("#name").val().trim(),
+                photo: $("#photo").val().trim(),
+                scores: [
+                  $("#q1").val(),
+                  $("#q2").val(),
+                  $("#q3").val(),
+                  $("#q4").val(),
+                  $("#q5").val(),
+                  $("#q5").val(),
+                  $("#q6").val(),
+                  $("#q7").val(),
+                  $("#q8").val(),
+                  $("#q9").val(),
+                  $("#q10").val(),
+                ]
+              }
+            }
         })
         //jquery and javascript go here.
     </script>
